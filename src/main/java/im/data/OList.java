@@ -5,7 +5,7 @@ import java.util.Iterator;
  * @author hqs
  * i aa
  */
-public class OList<T> implements Iterable<T> {
+public class OList implements Iterable<Object> {
 
 	private Element root;
 
@@ -34,7 +34,7 @@ public class OList<T> implements Iterable<T> {
 		}
 	}
 
-	public void insert(int index, T data) {
+	public void insert(int index, Object data) {
 		Element e = get(index, true);
 		Element eNew = new Element(data);
 
@@ -50,7 +50,7 @@ public class OList<T> implements Iterable<T> {
 		}
 	}
 
-	public T prev(int index) {
+	public Object prev(int index) {
 		if (index < 1) {
 			throw new IndexOutOfBoundsException();
 		}
@@ -73,7 +73,7 @@ public class OList<T> implements Iterable<T> {
 		return e;
 	}
 
-	public T get(int index) {
+	public Object get(int index) {
 		Element e = root;
 		for (int i = 0; i < index; i++) {
 			if (e == null) {
@@ -84,7 +84,7 @@ public class OList<T> implements Iterable<T> {
 		return e.data;
 	}
 
-	public void add(T obj) {
+	public void add(Object obj) {
 		if (root == null) {
 			root = new Element(obj);
 		} else {
@@ -103,24 +103,24 @@ public class OList<T> implements Iterable<T> {
 
 	class Element {
 
-		T data;
+		Object data;
 
 		Element prev;
 		Element next;
 
-		public Element(T data) {
+		public Element(Object data) {
 			this.data = data;
 		}
 
 	}
     //
-	public Iterator<T> iterator() {
-		return new Iterator<T>() {
+	public Iterator<Object> iterator() {
+		return new Iterator<Object>() {
 			Element e = root;
 			boolean first = true;
             int count = 0 ; 
             int size = size() ; 
-			public T next() {
+			public Object next() {
 				if (first) {
 					e = root;
 					first = false;

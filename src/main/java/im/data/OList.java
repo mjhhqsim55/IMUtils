@@ -118,19 +118,21 @@ public class OList implements Iterable<Object> {
 		return new Iterator<Object>() {
 			Element e = root;
 			boolean first = true;
-
+            int count = 0 ; 
+            int size = size() ; 
 			public Object next() {
-				return e.data;
-			}
-
-			public boolean hasNext() {
 				if (first) {
 					e = root;
 					first = false;
 				} else {
 					e = e.next;
 				}
-				return e != null;
+				count++ ; 
+				return e.data;
+			}
+
+			public boolean hasNext() {
+				return count < size ; 
 			}
 		};
 	}

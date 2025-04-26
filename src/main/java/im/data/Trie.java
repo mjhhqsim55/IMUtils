@@ -3,7 +3,7 @@ package im.data;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**单词树实现
  * @author hqs
  * i aa
  */
